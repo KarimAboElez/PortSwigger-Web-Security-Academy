@@ -36,14 +36,20 @@ The repository documents the vulnerabilities I studied, the techniques I used to
 
 Authentication vulnerabilities including:
 
-* Username enumeration
-* 2FA bypasses
-* Password reset vulnerabilities
-* Brute-force protection bypasses
-* Account lockout weaknesses
-* Stay-logged-in cookie attacks
-* Password change vulnerabilities
-* Password reset poisoning
+* Username Enumeration via Different Responses
+* 2FA Simple Bypass
+* Password Reset Broken Logic
+* Username Enumeration via Subtly Different Responses
+* Username Enumeration via Response Timing
+* Broken Brute-Force Protection, IP Block
+* Username Enumeration via Account Lock
+* 2FA Broken Logic
+* Brute-Forcing a Stay-Logged-In Cookie
+* Offline Password Cracking
+* Password Reset Poisoning via Middleware
+* Password Brute-Force via Password Change
+* Broken Brute-Force Protection, Multiple Credentials per Request
+* 2FA Bypass Using a Brute-Force Attack
 
 ### Access Control
 
