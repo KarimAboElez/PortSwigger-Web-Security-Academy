@@ -1,27 +1,36 @@
-Lab: 2FA Bypass Using a Brute-Force Attack (EXPERT)
+# Lab: 2FA Bypass Using a Brute-Force Attack (EXPERT)
 
-Objective
+## Objective:
 Exploit a weakness in the Two-Factor Authentication mechanism to brute-force Carlos's OTP code and gain access to his account.
 
-Vulnerability
-The application protects the login with a 2FA code, but every successful username/password login generates a fresh authenticated session.
+---
+## Vulnerability
 
-This allows brute-forcing the OTP by automatically logging in before every attempt using Burp Macros.
+The application protects the login with a 2FA code, but every successful username/password login generates a fresh authenticated session. This makes it possible to brute-force the OTP by automatically logging in before every attempt using Burp Macros.
 
 Victim Credentials
+
 Username: carlos
 Password: montoya
 
-Phase 1 - Capture the Authentication Flow
+---
+
+## Step 1 - Capture the Authentication Flow
+
 Log in using Carlos's credentials and capture the following requests:
 
 GET /login
+
 POST /login
+
 GET /login2
 
-These requests represent the complete login flow before OTP verification.
+These requests represent the complete login flow before the OTP verification page.
 
-Phase 2 - Create a Burp Macro
+---
+
+## Step 2 - Create a Burp Macro
+
 Navigate to:
 
 Settings
@@ -31,14 +40,18 @@ Settings
 Create a new Macro and include the following requests in order:
 
 GET /login
+
 POST /login
+
 GET /login2
 
 Burp automatically extracts the session cookie and any required CSRF token.
 
 Save the Macro.
 
-Phase 3 - Create a Session Handling Rule
+---
+## Step 3 - Create a Session Handling Rule
+
 Create a new Session Handling Rule.
 
 Configure it to execute the Macro before every Intruder request.
@@ -50,20 +63,30 @@ This causes Burp to:
 3. Open the OTP page.
 4. Send the brute-force request.
 
-Phase 4 - Configure Intruder
+---
+
+## Step 4 - Configure Intruder
+
 Send the POST /login2 request to Intruder.
 
-Attack Type
+Attack Type:
+
 Sniper
 
 Select only the mfa-code parameter as the payload position.
 
-Payload
+Payload:
+
 0000
+
 ↓
+
 9999
 
-Phase 5 - Start the Attack
+---
+
+## Step 5 - Start the Attack
+
 Launch the Intruder attack.
 
 Burp executes the Macro before every OTP attempt, creating a new authenticated session each time.
@@ -71,41 +94,55 @@ Burp executes the Macro before every OTP attempt, creating a new authenticated s
 Eventually one request returns:
 
 HTTP/2 302 Found
-Location: /my-account?id=carlos
 
-instead of:
+Location:
+/my-account?id=carlos
 
-HTTP/2 200 OK
+instead of
+
+HTTP/2 200
 
 This indicates that the correct OTP has been found.
 
-Phase 6 - Access Carlos's Account
+---
+
+## Step 6 - Access Carlos's Account
+
 The successful response contains a new authenticated session:
 
-Set-Cookie: session=xxxxxxxxxxxxxxxx
+Set-Cookie:
+session=xxxxxxxxxxxxxxxx
 
-Copy this session value and replace your current session cookie in the browser using the Inspector.
+I simply copied this session value and replaced my current session cookie in the browser using the Inspector.
 
-After refreshing the page, you are logged in as Carlos.
+After refreshing the page, I was logged in as Carlos.
 
-Lab Solved ✅
+The lab was solved successfully.
 
-Tools Used
-Burp Suite Professional
-Proxy
-Intruder
-Burp Macros
-Session Handling Rules
+---
 
-Skills Learned
-Burp Macros
-Session Handling Rules
-Automated Authentication
-2FA Brute Force
-OTP Protection Bypass
-Authentication Workflow Analysis
+## Tools Used
 
-Key Takeaway
-Instead of brute-forcing the OTP directly, Burp Macros automatically perform a fresh login before every request.
+- Burp Suite Professional
+- Proxy
+- Intruder
+- Burp Macros
+- Session Handling Rules
 
-This bypasses the application's brute-force protection because each OTP attempt is made using a newly authenticated session.
+---
+
+## Skills Learned
+
+- Burp Macros
+- Session Handling Rules
+- Automated Authentication
+- 2FA Brute Force
+- OTP Protection Bypass
+- Authentication Workflow Analysis
+
+---
+
+## Key Takeaway
+
+Instead of brute-forcing the OTP directly, Burp Macros automatically perform a fresh login before every request. This bypasses the application's brute-force protection because each OTP attempt is made using a newly authenticated session.
+
