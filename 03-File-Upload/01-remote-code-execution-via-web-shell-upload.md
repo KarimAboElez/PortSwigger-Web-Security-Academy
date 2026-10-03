@@ -27,9 +27,9 @@ to
 myexploit.php
 
 5. I removed the original image contents and replaced them with a simple PHP payload:
-
+```php
 <?php echo file_get_contents('/etc/passwd'); ?>
-
+```
 6. I uploaded the modified file.
 
 7. I changed the image request to:
