@@ -25,9 +25,9 @@ to
 (I also tested the URL-encoded version: ..%2ftest.php.)
 
 4. I replaced the image contents with the following PHP payload:
-
+```php
 <?php echo file_get_contents('/home/carlos/secret'); ?>
-
+```
 5. I sent the modified request.
 
 6. The server responded with HTTP 200 OK, indicating that the upload was accepted and the filename containing "../" was not properly sanitized.
