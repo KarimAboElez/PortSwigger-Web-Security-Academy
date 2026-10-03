@@ -53,14 +53,18 @@ Authentication vulnerabilities including:
 
 ### Access Control
 
-* Vertical privilege escalation
-* Horizontal privilege escalation
-* IDOR
-* User role manipulation
-* Unprotected administrative functionality
-* Method-based access control bypasses
-* Multi-step workflow access control flaws
-* Referer-based access control
+* Unprotected Admin Functionality
+* Unprotected Admin Functionality with Unpredictable URL
+* User Role Controlled by Request Parameter
+* User Role Can Be Modified in User Profile
+* User ID Controlled by Request Parameter
+* User ID Controlled by Request Parameter, with Unpredictable User IDs
+* User ID Controlled by Request Parameter with Data Leakage in Redirect
+* User ID Controlled by Request Parameter with Password Disclosure
+* Insecure Direct Object References (IDOR)
+* Method-Based Access Control Can Be Circumvented
+* Multi-Step Process with No Access Control on One Step
+* Referer-Based Access Control
 
 ### File Upload
 
